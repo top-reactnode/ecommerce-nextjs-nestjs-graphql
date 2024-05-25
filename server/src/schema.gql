@@ -1,0 +1,318 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthToken {
+  accessToken: String
+  refreshToken: String
+}
+
+type AuthTokenResponse {
+  authToken: AuthToken
+  user: User
+}
+
+type CartItem {
+  price: Float!
+  product: ProductCart!
+  quantity: Int!
+}
+
+input CartItemInput {
+  price: Float!
+  product: ProductInput!
+  quantity: Int!
+}
+
+type CategoryBrands {
+  brands: [String!]!
+  category: String!
+}
+
+input ChangePasswordInput {
+  newPassword: String!
+  oldPassword: String!
+}
+
+input CreateOrderInput {
+  orderItems: [OrderItemInput!]!
+  paymentMethod: String!
+  paymentResult: PaymentResultInput!
+  shippingAddress: ShippingAddressInput!
+  shippingPrice: Float!
+  taxPrice: Float!
+  totalPrice: Float!
+}
+
+input CreateProductInput {
+  brand: String!
+  category: String!
+  countInStock: Int = 0
+  description: String!
+  image: String = "https://i.imgur.com/Vih6Km5.png"
+  name: String!
+  numReviews: Int = 0
+  price: Float!
+}
+
+input CreateReviewProductInput {
+  comment: String!
+  rating: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginUserInput {
+  password: String!
+  usernameOrEmail: String!
+}
+
+type MessageError {
+  message: String!
+}
+
+type Mutation {
+  activate(token: String!): AuthTokenResponse!
+  addToCart(input: CartItemInput!): [CartItem!]!
+  adminCreateProduct(input: CreateProductInput!): Product!
+  adminDeleteProduct(_id: String!): Boolean!
+  adminDeleteUserById(_id: String!): Boolean!
+  adminSetDeliveryOrder(_id: String!): Order!
+  adminUpdateProduct(_id: String!, input: UpdateProductInput!): Product!
+  adminUpdateUserById(_id: String!, input: UpdateUserInput!): UserResponse!
+  autoRefresh: AuthTokenResponse!
+  changePassword(input: ChangePasswordInput!): UserResponse!
+  createOrder(input: CreateOrderInput!): Order!
+  forgotPassword(email: String!): TokenResponse!
+  login(input: LoginUserInput!): AuthTokenResponse!
+  logout: Boolean!
+  payOrder(_id: String!, paymentResult: PaymentResultInput!): Order!
+  refresh: AuthTokenResponse!
+  register(input: RegisterUserInput!): TokenResponse!
+  removeItemFromCart(productId: String!): [CartItem!]!
+  resetPassword(input: ResetPasswordInput!): UserResponse!
+  reviewProduct(input: CreateReviewProductInput!, productId: String!): Product!
+  updateCart(input: CartItemInput!): [CartItem!]!
+  updateProfile(input: UpdateProfileInput!): UserResponse!
+}
+
+type Order {
+  _id: ID!
+  createdAt: DateTime!
+  deliveredAt: DateTime
+  isDelivered: Boolean!
+  isPaid: Boolean!
+  orderItems: [OrderItem!]!
+  paidAt: DateTime
+  paymentMethod: String!
+  paymentResult: PaymentResult!
+  shippingAddress: ShippingAddress!
+  shippingPrice: Float!
+  taxPrice: Float!
+  totalPrice: Float!
+  updatedAt: DateTime!
+  user: User!
+}
+
+type OrderItem {
+  _id: ID!
+  createdAt: DateTime!
+  image: String!
+  name: String!
+  price: Float!
+  product: Product!
+  quantity: Int!
+  updatedAt: DateTime!
+}
+
+input OrderItemInput {
+  price: Float!
+  product: ProductInput!
+  quantity: Int!
+}
+
+type PaginatedOrder {
+  count: Int!
+  orders: [Order!]!
+}
+
+type PaginatedProduct {
+  count: Int!
+  products: [Product!]!
+}
+
+type PaginatedUser {
+  count: Int!
+  users: [User!]!
+}
+
+input PaginationInput {
+  limit: Int
+  page: Int
+}
+
+type PaymentResult {
+  _id: ID!
+  createdAt: DateTime!
+  email: String!
+  status: String!
+  updatedAt: DateTime!
+}
+
+input PaymentResultInput {
+  email: String!
+  status: String!
+}
+
+type Product {
+  _id: ID!
+  brand: String!
+  category: String!
+  countInStock: Int!
+  createdAt: DateTime!
+  description: String!
+  image: String!
+  name: String!
+  numReviews: Int!
+  price: Float!
+  rating: Int!
+  reviews: [Review!]!
+  updatedAt: DateTime!
+  user: User!
+}
+
+type ProductCart {
+  _id: ID!
+  brand: String!
+  category: String!
+  countInStock: Int!
+  description: String!
+  image: String!
+  name: String!
+  numReviews: Int!
+  price: Float!
+  rating: Int!
+}
+
+input ProductInput {
+  _id: ID!
+  brand: String!
+  category: String!
+  countInStock: Int = 0
+  description: String!
+  image: String!
+  name: String!
+  numReviews: Int = 0
+  price: Float!
+  rating: Int = 0
+}
+
+type Query {
+  adminGetOrders(pagination: PaginationInput): PaginatedOrder!
+  adminGetUserByEmail(email: String!): UserResponse!
+  adminGetUserById(_id: String!): UserResponse!
+  adminGetUserByUsername(username: String!): UserResponse!
+  adminSearchUsers(pagination: PaginationInput, q: String!): PaginatedUser!
+  allCategories: [String!]!
+  brandsByCategory(category: String!): [String!]!
+  categoryBrands: [CategoryBrands!]!
+  latestProducts(limit: Int): [Product!]!
+  me: UserResponse!
+  myOrders(pagination: PaginationInput): PaginatedOrder!
+  orderById(_id: String!): Order!
+  productById(_id: String!): Product!
+  products(pagination: PaginationInput): PaginatedProduct!
+  productsByBrand(brand: String!, pagination: PaginationInput): PaginatedProduct!
+  productsByCategory(category: String!, pagination: PaginationInput): PaginatedProduct!
+  productsOfBrandByCategory(brand: String!, category: String!, pagination: PaginationInput): PaginatedProduct!
+  queryProducts(pagination: PaginationInput, q: String!): PaginatedProduct!
+  topProducts(limit: Int): [Product!]!
+}
+
+input RegisterUserInput {
+  avatar: String
+  email: String!
+  fullName: String
+  password: String
+  username: String!
+}
+
+input ResetPasswordInput {
+  newPassword: String!
+  token: String!
+}
+
+type Review {
+  _id: ID!
+  comment: String!
+  createdAt: DateTime!
+  rating: Int!
+  reviewerName: String!
+  updatedAt: DateTime!
+  user: User!
+}
+
+type ShippingAddress {
+  _id: ID!
+  address: String!
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  postalCode: String!
+  updatedAt: DateTime!
+}
+
+input ShippingAddressInput {
+  address: String!
+  city: String!
+  country: String!
+  postalCode: String!
+}
+
+type TokenResponse {
+  token: String
+}
+
+input UpdateProductInput {
+  brand: String
+  category: String
+  countInStock: Int = 0
+  description: String
+  image: String = "https://i.imgur.com/Vih6Km5.png"
+  name: String
+  price: Float
+}
+
+input UpdateProfileInput {
+  avatar: String
+  email: String
+  fullName: String
+  username: String
+}
+
+input UpdateUserInput {
+  avatar: String
+  email: String
+  fullName: String
+  role: String
+  username: String
+}
+
+type User {
+  _id: ID!
+  avatar: String
+  createdAt: DateTime!
+  email: String!
+  fullName: String
+  role: String
+  updatedAt: DateTime!
+  username: String!
+}
+
+type UserResponse {
+  error: MessageError
+  user: User
+}

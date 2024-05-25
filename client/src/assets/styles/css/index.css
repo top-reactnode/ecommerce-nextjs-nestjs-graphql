@@ -1,0 +1,259 @@
+html,
+body {
+  background: #fff;
+}
+
+.container-1400 {
+  max-width: 1400px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.fas {
+  cursor: pointer;
+}
+
+.text-red {
+  color: red;
+}
+
+.no-border {
+  border: none;
+}
+
+.btn-delete {
+  color: red;
+  background: transparent;
+  border: none;
+}
+
+.btn-delete:hover {
+  opacity: 0.5;
+  background: white;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+  .navbar-nav > li > .dropdown-menu {
+    background-color: #343a40;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block !important;
+    margin-top: 0;
+    z-index: 100;
+  }
+  .dropdown-toggle::after {
+    -webkit-transition: -webkit-transform 0.15s linear;
+    transition: -webkit-transform 0.15s linear;
+    transition: transform 0.15s linear;
+    transition: transform 0.15s linear, -webkit-transform 0.15s linear;
+  }
+  .show.dropdown .dropdown-toggle::after {
+    -webkit-transform: translateY(3px);
+            transform: translateY(3px);
+  }
+}
+
+.card-image {
+  cursor: pointer;
+  width: 100%;
+  height: 20vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-img-top {
+  cursor: pointer;
+  width: 100%;
+  height: 20vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-img-top-50 {
+  cursor: pointer;
+  width: 100%;
+  height: 15rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.img-15 {
+  width: 100%;
+  height: 20vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-img-circle {
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.card-img-circle img {
+  height: 6rem;
+  width: 6rem;
+}
+
+.home-cat-item div {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+.top-categories {
+  overflow-x: scroll;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.bg-gray {
+  background: #f3f3f3;
+}
+
+@media all and (min-width: 768px) {
+  .home-cat-item div {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+  }
+  .top-categories {
+    overflow-x: auto;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .card-img-circle img {
+    max-height: 8rem;
+    max-width: 8rem;
+  }
+  .home-cat-item div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .top-categories {
+    overflow-x: auto;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.flex-nowrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.item-slider-wrapper {
+  grid-column: 1 / -1;
+  height: 26vw;
+}
+
+.item-slider {
+  width: 100%;
+  height: 100%;
+}
+
+.item-slider .slick-slide > div {
+  margin-left: 0.6vw;
+}
+
+.item-slider .slick-list {
+  margin-left: -0.6vw;
+}
+
+.item-slider .icon-related {
+  position: absolute;
+  top: 40%;
+  font-size: x-large;
+  color: black;
+  padding: 0.5vw;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.item-slider .next {
+  right: 0;
+}
+
+.item-slider .prev {
+  left: 0;
+  z-index: 1;
+}
+
+.item-slider .icon-related:hover {
+  opacity: 1;
+}
+
+.social-class {
+  font-size: 2rem;
+}
+
+.social-class i {
+  margin-right: 0.5rem;
+}
+
+.social-class i:hover {
+  cursor: pointer;
+}
+
+.font-size-small {
+  font-size: 0.9rem;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.btn-cart:hover i {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: #ee5132;
+}
+
+.sidebar-products {
+  margin-left: 0;
+  padding-left: 0;
+  max-width: 6rem;
+}
+
+.sidebar-products li {
+  width: 5rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.sidebar-products li:hover {
+  background: #f2f2f2;
+  border-radius: 2px;
+}

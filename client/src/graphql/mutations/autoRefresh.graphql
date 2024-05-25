@@ -1,0 +1,10 @@
+mutation AutoRefresh {
+  autoRefresh {
+    authToken {
+      accessToken
+    }
+    user {
+      ...RegularUser
+    }
+  }
+}

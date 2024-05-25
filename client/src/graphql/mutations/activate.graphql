@@ -1,0 +1,10 @@
+mutation Activate($token: String!) {
+  activate(token: $token) {
+    user {
+      ...RegularUser
+    }
+    authToken {
+      accessToken
+    }
+  }
+}
